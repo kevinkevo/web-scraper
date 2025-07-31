@@ -173,16 +173,4 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
     app.add_handler(MessageHandler(filters.COMMAND, unknown))
 
-    # === Render Webhook Fix (replaces polling) ===
-    WEBHOOK_HOST = os.getenv("RENDER_EXTERNAL_URL")
-    WEBHOOK_PATH = "/webhook"
-    WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
-
-    async def main():
-        await app.run_webhook(
-            listen="0.0.0.0",
-            port=int(os.environ.get("PORT", 10000)),
-            webhook_url=WEBHOOK_URL,
-        )
-
-    asyncio.run(main())
+    asyncio.run(app.run_polling())
