@@ -1,0 +1,11 @@
+python-telegram-bot==20.3
+requests
+beautifulsoup4
+fpdf
+python-dotenv
+redis
+openai
+fpdf2
+playwright==1.54.0
+
+
